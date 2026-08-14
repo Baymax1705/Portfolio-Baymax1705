@@ -13,7 +13,7 @@ export default function Education() {
     location: "Imphal, Manipur",
     cgpa: "7.80",
     courses: ["Data Structures & Algorithms", "Operating Systems", "Database Management", "Computer Networks", "Software Engineering", "Machine Learning"],
-    highlight: "Final Year · Graduating 2026",
+    highlight: "Graduated B.Tech CSE",
   };
 
   const schooling = [
@@ -23,7 +23,6 @@ export default function Education() {
       board: "CISCE Board",
       period: "2021",
       location: "Lucknow, Uttar Pradesh",
-      icon: "🎓",
     },
     {
       institution: "Lucknow Public School & Colleges",
@@ -31,7 +30,6 @@ export default function Education() {
       board: "CISCE Board",
       period: "2019",
       location: "Lucknow, Uttar Pradesh",
-      icon: "📚",
     },
   ];
 
@@ -150,11 +148,6 @@ export default function Education() {
               transition={{ type: "spring", stiffness: 85, damping: 16, delay: idx * 0.07 }}
               className="group flex items-start gap-4 border border-border bg-card p-5 rounded-xl card-hover"
             >
-              {/* Emoji icon */}
-              <div className="w-10 h-10 rounded-xl bg-background border border-border flex items-center justify-center text-xl shrink-0 group-hover:border-border-secondary transition-colors">
-                {school.icon}
-              </div>
-
               <div className="flex-1 min-w-0">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
                   <h3 className="text-sm font-bold text-foreground">{school.institution}</h3>

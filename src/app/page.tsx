@@ -17,8 +17,8 @@ export default function Home() {
       <ScrollProgress />
       <main className="flex-1">
         <Hero />
-        <Education />
         <Experience />
+        <Education />
         <Projects />
         <Skills />
         <Achievements />
