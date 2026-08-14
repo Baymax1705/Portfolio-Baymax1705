@@ -3,11 +3,23 @@
 :root {
   --background: #FFFFFF;
   --foreground: #0A0A0A;
-  --muted: #6B7280;
+  --muted: #4B5563;
   --accent: #2563EB;
   --accent-end: #7C3AED;
   --card: #F8FAFC;
   --border: #E5E7EB;
+  --glow-color: rgba(37, 99, 235, 0.05);
+}
+
+.dark {
+  --background: #030712;
+  --foreground: #F9FAFB;
+  --muted: #9CA3AF;
+  --accent: #3B82F6;
+  --accent-end: #8B5CF6;
+  --card: #0B1329;
+  --border: #1F2937;
+  --glow-color: rgba(59, 130, 246, 0.08);
 }
 
 @theme inline {
@@ -27,6 +39,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Custom premium styles */
@@ -34,5 +48,49 @@ body {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Advanced Card Glow Effect */
+.premium-card {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom right, var(--border), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.premium-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px var(--glow-color);
+}
+
+.premium-card:hover::before {
+  background: linear-gradient(to bottom right, var(--accent), var(--accent-end));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 

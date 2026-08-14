@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Award, ShieldCheck, Flame, GitMerge } from "lucide-react";
 
 export default function Achievements() {
@@ -28,19 +29,29 @@ export default function Achievements() {
   ];
 
   return (
-    <section id="achievements" className="py-20 sm:py-28 bg-white border-b border-border">
+    <section id="achievements" className="py-20 sm:py-28 bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12">
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12"
+        >
           Achievements & Recognition
-        </h2>
+        </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {achievements.map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="border border-border bg-card p-6 rounded-xl hover:border-muted/30 transition-colors flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="premium-card border border-border bg-card p-6 rounded-xl shadow-sm flex gap-4"
             >
-              <div className="p-2 rounded-lg bg-white border border-border/80 h-fit shadow-sm">
+              <div className="p-2 rounded-lg bg-background border border-border/80 h-fit shadow-sm">
                 {item.icon}
               </div>
               <div>
@@ -51,10 +62,11 @@ export default function Achievements() {
                   {item.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+

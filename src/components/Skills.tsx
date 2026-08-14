@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Code2, Layout, Server, Database, Settings } from "lucide-react";
 
 export default function Skills() {
@@ -33,21 +34,31 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20 sm:py-28 bg-white border-b border-border">
+    <section id="skills" className="py-20 sm:py-28 bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12">
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12"
+        >
           Technical Skills
-        </h2>
+        </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {skillCategories.map((category, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="border border-border bg-card p-6 rounded-xl hover:border-muted/30 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="premium-card border border-border bg-card p-6 rounded-xl shadow-sm"
             >
               {/* Category Header */}
-              <div className="flex items-center gap-2 mb-4">
-                <div className="p-1.5 rounded-lg bg-white border border-border/80 shadow-sm">
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="p-1.5 rounded-lg bg-background border border-border/80 shadow-sm">
                   {category.icon}
                 </div>
                 <h3 className="font-bold text-sm text-foreground tracking-tight">
@@ -60,16 +71,17 @@ export default function Skills() {
                 {category.items.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs bg-white border border-border/80 px-2.5 py-1 rounded-md text-foreground font-medium"
+                    className="text-xs bg-background border border-border/80 px-2.5 py-1 rounded-md text-foreground font-semibold shadow-sm"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+

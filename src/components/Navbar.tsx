@@ -1,13 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Avoid hydration mismatch by waiting for mounting
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
@@ -30,7 +35,7 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-200 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-border/80 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]"
+          ? "bg-background/80 backdrop-blur-md border-b border-border/80 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -52,7 +57,22 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-4">
+          {/* Light/Dark Toggle */}
+          {mounted && (
+            <button
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg border border-border bg-card hover:bg-border/30 transition-colors text-muted hover:text-foreground"
+              aria-label="Toggle theme"
+            >
+              {resolvedTheme === "dark" ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </button>
+          )}
+
           <a
             href="/resume.pdf"
             target="_blank"
@@ -65,18 +85,29 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu trigger */}
-        <button
-          className="md:hidden p-1.5 hover:bg-card rounded-md border border-border/40 transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          {mounted && (
+            <button
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              className="p-1.5 rounded-lg border border-border bg-card text-muted hover:text-foreground"
+              aria-label="Toggle theme"
+            >
+              {resolvedTheme === "dark" ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+            </button>
+          )}
+          <button
+            className="p-1.5 hover:bg-card rounded-md border border-border/40 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile nav drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-b border-border bg-white flex flex-col px-6 py-4 gap-4 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="md:hidden border-b border-border bg-background flex flex-col px-6 py-4 gap-4 animate-in fade-in slide-in-from-top-2 duration-150">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -103,3 +134,4 @@ export default function Navbar() {
     </header>
   );
 }
+

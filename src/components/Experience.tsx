@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Briefcase, Calendar, CheckCircle2 } from "lucide-react";
 
 export default function Experience() {
@@ -31,17 +32,27 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 sm:py-28 bg-white border-b border-border">
+    <section id="experience" className="py-20 sm:py-28 bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12">
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12"
+        >
           Work Experience
-        </h2>
+        </motion.h2>
 
         <div className="space-y-12">
           {experiences.map((exp, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="group relative border border-border bg-card rounded-xl p-6 sm:p-8 hover:border-muted/30 transition-colors"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="premium-card group relative border border-border bg-card rounded-xl p-6 sm:p-8 shadow-sm"
             >
               {/* Card Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
@@ -52,7 +63,7 @@ export default function Experience() {
                   </h3>
                   <p className="text-sm font-medium text-muted mt-0.5">{exp.role}</p>
                 </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted bg-white border border-border px-3 py-1 rounded-full self-start sm:self-center">
+                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted bg-background border border-border px-3 py-1 rounded-full self-start sm:self-center">
                   <Calendar className="w-3 h-3" />
                   {exp.period}
                 </div>
@@ -67,10 +78,11 @@ export default function Experience() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
