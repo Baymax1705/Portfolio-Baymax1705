@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background to-background" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-center gap-12 sm:gap-16">
-        {/* Left column: Image Profile Picture (Bigger & Left-aligned) */}
+        {/* Left column: Image Profile Picture (Bigger, Left-aligned, Circular) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -20,17 +20,18 @@ export default function Hero() {
           className="relative shrink-0 mx-auto md:mx-0"
         >
           {/* Subtle gradient ring outline */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-accent to-accent-end opacity-20 blur-lg" />
-          <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-2xl border-[3px] border-border-secondary overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent to-accent-end opacity-20 blur-lg" />
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border-[3px] border-border-secondary overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
             <Image
               src="/profile.jpg"
               alt="Yash Verma"
               fill
-              className="object-cover"
+              className="object-cover scale-[1.3] translate-y-[3%]" /* Adjusted scale to center the portrait */
               priority
             />
           </div>
         </motion.div>
+
 
         {/* Right column: Text Content */}
         <div className="flex-1 flex flex-col items-start text-left">
