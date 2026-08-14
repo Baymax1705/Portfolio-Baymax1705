@@ -20,6 +20,18 @@ export default function Experience() {
       ],
     },
     {
+      company: "Amazon",
+      role: "Trainee - Amazon ML Summer School",
+      period: "Aug 2025",
+      current: false,
+      link: null,
+      highlights: [
+        "Selected for the machine learning cohort under Amazon Research Scientists",
+        "Trained on machine learning foundations, deep learning frameworks, and algorithmic systems",
+        "Gained hands-on exposure to scalable vector embeddings and model optimizations",
+      ],
+    },
+    {
       company: "IIT Ropar · VLED Labs",
       role: "Project Intern",
       period: "Jan 2026 – Mar 2026",
