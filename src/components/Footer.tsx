@@ -25,7 +25,7 @@ export default function Footer() {
             <Github className="w-4.5 h-4.5" />
           </a>
           <a
-            href="https://linkedin.com/in/yash-verma"
+            href="https://linkedin.com/in/yash-verma-baymax1705/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground transition-colors"
@@ -34,12 +34,13 @@ export default function Footer() {
             <Linkedin className="w-4.5 h-4.5" />
           </a>
           <a
-            href="mailto:yashverma.work@gmail.com"
+            href="mailto:yashverma.off17@gmail.com"
             className="hover:text-foreground transition-colors"
             aria-label="Email"
           >
             <Mail className="w-4.5 h-4.5" />
           </a>
+
         </div>
       </div>
     </footer>

@@ -85,7 +85,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/yash-verma"
+            href="https://linkedin.com/in/yash-verma-baymax1705/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
@@ -94,12 +94,13 @@ export default function Hero() {
             LinkedIn
           </a>
           <a
-            href="mailto:yashverma.work@gmail.com"
+            href="mailto:yashverma.off17@gmail.com"
             className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
           >
             <Mail className="w-4 h-4 text-red-500 group-hover:scale-105 transition-transform" />
             Email
           </a>
+
         </motion.div>
       </div>
     </section>

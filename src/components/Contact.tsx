@@ -36,14 +36,14 @@ export default function Contact() {
           className="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto"
         >
           <a
-            href="mailto:yashverma.work@gmail.com"
+            href="mailto:yashverma.off17@gmail.com"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs font-bold bg-foreground text-background py-3.5 px-6 rounded-lg hover:opacity-90 transition-opacity"
           >
             Email Me
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
           <a
-            href="https://linkedin.com/in/yash-verma"
+            href="https://linkedin.com/in/yash-verma-baymax1705/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs font-bold bg-card text-foreground py-3.5 px-6 rounded-lg border border-border-secondary hover:bg-border/60 transition-colors"
@@ -51,6 +51,7 @@ export default function Contact() {
             <Linkedin className="w-3.5 h-3.5 text-blue-500" />
             LinkedIn
           </a>
+
           <a
             href="https://github.com/Baymax1705"
             target="_blank"
