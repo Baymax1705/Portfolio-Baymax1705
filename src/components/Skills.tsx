@@ -27,6 +27,11 @@ export default function Skills() {
       items: ["MongoDB", "MySQL", "SQLite"],
     },
     {
+      title: "DevOps & Cloud",
+      icon: <Settings className="w-3.5 h-3.5 text-amber-600" />,
+      items: ["Docker", "AWS", "CI/CD", "Nginx"],
+    },
+    {
       title: "Tools",
       icon: <Settings className="w-3.5 h-3.5 text-slate-600" />,
       items: ["Git", "GitHub", "Linux", "Postman"],
@@ -56,20 +61,20 @@ export default function Skills() {
               transition={{ duration: 0.3, delay: idx * 0.04 }}
               className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-md bg-background border border-border flex items-center justify-center shadow-sm">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-md bg-background border border-border flex items-center justify-center shadow-sm">
                   {category.icon}
                 </div>
-                <span className="font-bold text-xs text-foreground tracking-tight">
+                <span className="font-bold text-sm text-foreground tracking-tight">
                   {category.title}
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 sm:justify-end">
+              <div className="flex flex-wrap gap-2 sm:justify-end">
                 {category.items.map((skill) => (
                   <span
                     key={skill}
-                    className="text-[10px] font-bold bg-background border border-border/80 px-2.5 py-1 rounded-md text-foreground shadow-sm"
+                    className="text-xs font-bold bg-background border border-border/80 px-3 py-1 rounded-md text-foreground shadow-sm"
                   >
                     {skill}
                   </span>
@@ -82,5 +87,6 @@ export default function Skills() {
     </section>
   );
 }
+
 
 

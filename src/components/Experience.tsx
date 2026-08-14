@@ -59,13 +59,13 @@ export default function Experience() {
 
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 mb-4">
                 <div>
-                  <h3 className="text-base font-bold text-foreground">
+                  <h3 className="text-lg font-bold text-foreground">
                     {exp.company}
                   </h3>
-                  <p className="text-xs font-semibold text-muted mt-0.5">{exp.role}</p>
+                  <p className="text-sm font-semibold text-muted mt-0.5">{exp.role}</p>
                 </div>
-                <div className="inline-flex items-center gap-1 text-[10px] font-bold text-muted bg-card border border-border px-2 py-0.5 rounded-md self-start">
-                  <Calendar className="w-2.5 h-2.5" />
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-muted bg-card border border-border px-2.5 py-1 rounded-md self-start">
+                  <Calendar className="w-3 h-3" />
                   {exp.period}
                 </div>
               </div>
@@ -73,11 +73,12 @@ export default function Experience() {
               {/* Highlights */}
               <ul className="space-y-2.5">
                 {exp.highlights.map((highlight, itemIdx) => (
-                  <li key={itemIdx} className="text-xs text-muted leading-relaxed list-disc list-inside">
+                  <li key={itemIdx} className="text-sm text-muted leading-relaxed list-disc list-inside">
                     <span className="text-muted/80">{highlight}</span>
                   </li>
                 ))}
               </ul>
+
             </motion.div>
           ))}
         </div>

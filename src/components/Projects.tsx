@@ -61,10 +61,10 @@ export default function Projects() {
               {/* Header Details */}
               <div className="flex items-center justify-between gap-4 mb-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-md bg-background border border-border flex items-center justify-center">
-                    <Code2 className="w-3.5 h-3.5 text-accent" />
+                  <div className="w-8 h-8 rounded-md bg-background border border-border flex items-center justify-center">
+                    <Code2 className="w-4 h-4 text-accent" />
                   </div>
-                  <h3 className="font-bold text-sm text-foreground">
+                  <h3 className="font-bold text-base text-foreground">
                     {project.title}
                   </h3>
                 </div>
@@ -76,7 +76,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="p-1 rounded hover:bg-background border border-transparent hover:border-border text-muted hover:text-foreground transition-all"
                   >
-                    <Github className="w-4.5 h-4.5" />
+                    <Github className="w-5 h-5" />
                   </a>
                   {project.demo && (
                     <a
@@ -85,19 +85,19 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="p-1 rounded hover:bg-background border border-transparent hover:border-border text-muted hover:text-foreground transition-all"
                     >
-                      <ExternalLink className="w-4.5 h-4.5" />
+                      <ExternalLink className="w-5 h-5" />
                     </a>
                   )}
                 </div>
               </div>
 
               {/* Main Content */}
-              <p className="text-xs text-muted mb-4 leading-relaxed">
+              <p className="text-sm text-muted mb-4 leading-relaxed">
                 {project.description}
               </p>
 
               {/* Problem/Impact Split Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border mb-4 text-[11px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border mb-4 text-xs">
                 <div>
                   <span className="font-bold text-foreground block mb-0.5">Problem:</span>
                   <span className="text-muted leading-relaxed">{project.problem}</span>
@@ -109,16 +109,17 @@ export default function Projects() {
               </div>
 
               {/* Tech tag list */}
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-[9px] font-bold bg-background border border-border px-2 py-0.5 rounded text-muted shadow-sm"
+                    className="text-[10px] font-bold bg-background border border-border px-2.5 py-0.5 rounded text-muted shadow-sm"
                   >
                     {t}
                   </span>
                 ))}
               </div>
+
             </motion.div>
           ))}
         </div>
