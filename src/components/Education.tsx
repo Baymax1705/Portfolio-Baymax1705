@@ -13,12 +13,19 @@ export default function Education() {
       location: "Imphal, Manipur",
     },
     {
-      institution: "HSC & SSC | Lucknow Public School & Colleges",
-      degree: "Council for the Indian School Certificate Examinations (XII: 89.0% | X: 80.6%)",
-      period: "2021 & 2019",
+      institution: "Lucknow Public School & Colleges, Lucknow",
+      degree: "HSC (Class XII) - Council for the Indian School Certificate Examinations (89.0%)",
+      period: "2021",
+      location: "Lucknow, Uttar Pradesh",
+    },
+    {
+      institution: "Lucknow Public School & Colleges, Lucknow",
+      degree: "SSC (Class X) - Council for the Indian School Certificate Examinations (80.6%)",
+      period: "2019",
       location: "Lucknow, Uttar Pradesh",
     },
   ];
+
 
   return (
     <section id="education" className="py-20 sm:py-28 bg-background border-b border-border">
