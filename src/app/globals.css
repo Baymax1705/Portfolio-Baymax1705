@@ -44,9 +44,11 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-size: 15px; /* Slightly increased base font sizing */
+  font-size: 15px;
   line-height: 1.625;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 
 
 /* Premium Developer Grid Backdrop */

@@ -45,12 +45,13 @@ export default function Education() {
           {educationList.map((edu, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+              transition={{ type: "spring", stiffness: 80, damping: 15, delay: idx * 0.05 }}
               className="group relative border border-border bg-card p-6 rounded-xl shadow-sm hover:border-border-secondary transition-colors"
             >
+
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
                 <div>
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">

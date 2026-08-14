@@ -14,9 +14,9 @@ export default function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-center gap-12 sm:gap-16">
         {/* Left column: Image Profile Picture (Bigger, Left-aligned, Circular) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.05 }}
           className="relative shrink-0 mx-auto md:mx-0"
         >
           {/* Subtle gradient ring outline */}
@@ -37,9 +37,9 @@ export default function Hero() {
         <div className="flex-1 flex flex-col items-start text-left">
           {/* Software Engineer Label */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800/80 text-foreground border border-border-secondary mb-6"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent dark:bg-accent" />
@@ -48,9 +48,9 @@ export default function Hero() {
 
           {/* Large typography title */}
           <motion.h1
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.05 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.08] mb-6 max-w-3xl"
           >
             Building scalable <br />
@@ -60,9 +60,9 @@ export default function Hero() {
 
           {/* Description body */}
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.1 }}
             className="text-base sm:text-lg text-muted leading-relaxed mb-8 max-w-2xl font-normal"
           >
             Computer Science Engineer focused on backend systems, full-stack applications, automation, and AI-powered products. Experienced in shipping production-ready features and building systems used by real users.
@@ -70,9 +70,9 @@ export default function Hero() {
 
           {/* Action Button Grids */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.15 }}
             className="flex flex-wrap items-center gap-4 mb-12"
           >
             <a
@@ -96,7 +96,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
             className="flex items-center gap-6 text-muted border-t border-border-secondary pt-8 w-full"
           >
             <a

@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
+import ScrollProgress from "@/components/ScrollProgress";
 import Hero from "@/components/Hero";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
+      <ScrollProgress />
       <main className="flex-1">
         <Hero />
         <Education />
@@ -26,4 +28,3 @@ export default function Home() {
     </div>
   );
 }
-

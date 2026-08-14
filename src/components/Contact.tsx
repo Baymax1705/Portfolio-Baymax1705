@@ -9,32 +9,33 @@ export default function Contact() {
     <section id="contact" className="py-28 sm:py-36 bg-background relative overflow-hidden">
       <div className="max-w-3xl mx-auto px-6 text-center">
         <motion.h2
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+          transition={{ type: "spring", stiffness: 80, damping: 15 }}
           className="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground mb-4"
         >
           Let's build something impactful.
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.05 }}
+          viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+          transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.05 }}
           className="text-xs sm:text-sm text-muted max-w-lg mx-auto mb-10 leading-relaxed"
         >
           Open to Software Engineering opportunities, product-focused teams, and challenging technical problems.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+          transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.1 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto"
         >
+
           <a
             href="mailto:yashverma.off17@gmail.com"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-xs font-bold bg-foreground text-background py-3.5 px-6 rounded-lg hover:opacity-90 transition-opacity"

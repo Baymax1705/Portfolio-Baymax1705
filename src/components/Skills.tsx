@@ -55,12 +55,13 @@ export default function Skills() {
           {skillCategories.map((category, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.04 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-5% 0px -5% 0px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 18, delay: idx * 0.04 }}
               className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
+
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-md bg-background border border-border flex items-center justify-center shadow-sm">
                   {category.icon}

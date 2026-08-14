@@ -60,12 +60,13 @@ export default function Experience() {
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+              transition={{ type: "spring", stiffness: 80, damping: 15, delay: idx * 0.05 }}
               className="relative"
             >
+
               {/* Timeline circle point */}
               <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-background border-2 border-accent" />
 

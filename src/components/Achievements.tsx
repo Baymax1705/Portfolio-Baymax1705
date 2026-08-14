@@ -45,12 +45,13 @@ export default function Achievements() {
           {achievements.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+              transition={{ type: "spring", stiffness: 90, damping: 15, delay: idx * 0.05 }}
               className="border border-border bg-card p-5 rounded-xl flex gap-3.5 shadow-sm hover:border-border-secondary transition-colors"
             >
+
               <div className="p-1.5 rounded bg-background border border-border h-fit shadow-sm">
                 {item.icon}
               </div>

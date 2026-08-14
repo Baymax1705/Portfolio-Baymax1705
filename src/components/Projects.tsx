@@ -52,12 +52,13 @@ export default function Projects() {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+              transition={{ type: "spring", stiffness: 85, damping: 15, delay: idx * 0.05 }}
               className="group border border-border bg-card p-6 rounded-xl shadow-sm hover:border-border-secondary transition-colors"
             >
+
               {/* Header Details */}
               <div className="flex items-center justify-between gap-4 mb-4">
                 <div className="flex items-center gap-2">
