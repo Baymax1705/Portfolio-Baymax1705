@@ -9,26 +9,29 @@ export default function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    // Initialize Lenis smooth scroll
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom premium ease-out curve
+      duration: 0.9,
+      // Smooth ease-out that fully resolves — no asymptotic freeze at bottom
+      easing: (t) => 1 - Math.pow(1 - t, 3),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 2.0,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.8,
       infinite: false,
     });
 
+    let rafHandle: number;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafHandle = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafHandle = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafHandle);
       lenis.destroy();
     };
   }, []);
