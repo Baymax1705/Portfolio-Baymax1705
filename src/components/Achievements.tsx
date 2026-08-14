@@ -7,13 +7,13 @@ import { Award, ShieldCheck, Flame, GitMerge } from "lucide-react";
 export default function Achievements() {
   const achievements = [
     {
-      title: "Amazon ML Summer School Shortlisted",
-      description: "Selected amongst top engineering applicants for machine learning training cohorts under Amazon researchers.",
+      title: "Trainee - Amazon ML Summer School",
+      description: "Selected for the Aug 2025 cohort. Trained in Machine Learning foundations under Amazon research scientists.",
       icon: <Flame className="w-3.5 h-3.5 text-orange-500" />,
     },
     {
-      title: "EROH Coding Contest (2nd & 3rd Place)",
-      description: "Ranked in top configurations in sequential programming iterations.",
+      title: "GATE CS '26 Qualified",
+      description: "Successfully cleared and qualified the GATE Computer Science exam.",
       icon: <Award className="w-3.5 h-3.5 text-blue-500" />,
     },
     {

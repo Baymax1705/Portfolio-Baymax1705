@@ -71,10 +71,25 @@ export default function Hero() {
             Hi, I&apos;m{" "}
             <span className="gradient-text">Yash Verma</span>
             <br />
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-muted/80">
+            <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-muted/80">
               Software Engineer
             </span>
           </motion.h1>
+
+          {/* Badges row */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 100, damping: 18, delay: 0.06 }}
+            className="flex flex-wrap gap-2 mb-6"
+          >
+            <span className="inline-flex items-center text-[10px] font-bold bg-neutral-100 dark:bg-neutral-800 text-foreground border border-border-secondary px-2.5 py-1 rounded-md">
+              🎯 GATE CS &apos;26 Qualified
+            </span>
+            <span className="inline-flex items-center text-[10px] font-bold bg-neutral-100 dark:bg-neutral-800 text-foreground border border-border-secondary px-2.5 py-1 rounded-md">
+              ⚡ Amazon ML Summer School &apos;25
+            </span>
+          </motion.div>
 
           {/* Description */}
           <motion.p
@@ -83,11 +98,7 @@ export default function Hero() {
             transition={{ type: "spring", stiffness: 90, damping: 16, delay: 0.09 }}
             className="text-sm sm:text-base text-muted leading-relaxed mb-8 max-w-xl"
           >
-            CS Engineer building{" "}
-            <span className="text-foreground font-semibold">scalable backend systems</span>,{" "}
-            full-stack products and{" "}
-            <span className="text-foreground font-semibold">AI-powered tools</span>.
-            Shipping production-quality features at startups and research labs.
+            CS Graduate from IIIT Manipur passionate about building scalable software, solving complex engineering challenges, and creating products that deliver meaningful user experiences.
           </motion.p>
 
           {/* CTAs */}
