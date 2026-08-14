@@ -2,14 +2,15 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #0A0A0A;
-  --muted: #525252;
+  --foreground: #09090B;
+  --muted: #71717A;
   --accent: #2563EB;
   --accent-end: #7C3AED;
-  --card: #FCFCFD;
-  --border: #F3F4F6;
-  --border-secondary: #E5E7EB;
-  --grid-color: rgba(0, 0, 0, 0.03);
+  --card: #FAFAFA;
+  --border: #E4E4E7;
+  --border-secondary: #D4D4D8;
+  --grid-color: rgba(0, 0, 0, 0.035);
+  --glow: rgba(37, 99, 235, 0.08);
 }
 
 .dark {
@@ -18,10 +19,11 @@
   --muted: #A1A1AA;
   --accent: #3B82F6;
   --accent-end: #8B5CF6;
-  --card: #121215;
-  --border: #1D1D21;
-  --border-secondary: #27272A;
-  --grid-color: rgba(255, 255, 255, 0.02);
+  --card: #111113;
+  --border: #1F1F23;
+  --border-secondary: #2A2A30;
+  --grid-color: rgba(255, 255, 255, 0.025);
+  --glow: rgba(59, 130, 246, 0.07);
 }
 
 @theme inline {
@@ -37,33 +39,72 @@
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
-  line-height: 1.625;
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.65;
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-x: hidden;
 }
-
-
 
 /* Premium Developer Grid Backdrop */
 .dot-grid {
-  background-image: radial-gradient(var(--grid-color) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(var(--grid-color) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
+/* Gradient text utility */
 .gradient-text {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Clean Micro-interactions */
+/* Section label style */
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Card hover glow effect */
+.card-hover {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  border-color: var(--border-secondary);
+  box-shadow: 0 0 0 1px var(--border-secondary), 0 8px 32px -8px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+.dark .card-hover:hover {
+  box-shadow: 0 0 0 1px var(--border-secondary), 0 0 40px -12px var(--glow);
+}
+
+/* Ambient glow blobs */
+.glow-blob {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.45;
+}
+
+/* Nav link underline effect */
 .nav-link {
   position: relative;
 }
@@ -77,17 +118,18 @@ body {
   left: 0;
   background-color: var(--foreground);
   transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+  transition: transform 0.22s ease-out;
 }
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
 /* Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -100,4 +142,39 @@ body {
   background: var(--muted);
 }
 
+/* Tag pill */
+.tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 2px 10px;
+  border-radius: 6px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.tag:hover {
+  border-color: var(--border-secondary);
+  color: var(--foreground);
+}
 
+/* Animated typing cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}

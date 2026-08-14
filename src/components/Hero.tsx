@@ -2,82 +2,104 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowRight, Download } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Download, MapPin } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background dot-grid border-b border-border py-20 sm:py-28">
-      {/* Dynamic backdrop glows and grid mask */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background to-background" />
+    <section className="relative overflow-hidden bg-background dot-grid border-b border-border py-24 sm:py-32">
+      {/* Ambient gradient blobs */}
+      <div className="glow-blob w-[600px] h-[600px] bg-blue-500/10 dark:bg-blue-500/8 -top-40 -left-40" />
+      <div className="glow-blob w-[500px] h-[500px] bg-purple-500/8 dark:bg-purple-500/6 -top-20 -right-20" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-center gap-12 sm:gap-16">
-        {/* Left column: Image Profile Picture (Bigger, Left-aligned, Circular) */}
+      {/* Fade gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/30 to-background pointer-events-none" />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-14 md:gap-16">
+        {/* Left — Profile Image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+          initial={{ opacity: 0, scale: 0.88, rotate: -3 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.05 }}
+          transition={{ type: "spring", stiffness: 90, damping: 18 }}
           className="relative shrink-0 mx-auto md:mx-0"
         >
-          {/* Subtle gradient ring outline */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent to-accent-end opacity-20 blur-lg" />
-          <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border-[3px] border-border-secondary overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+          {/* Glowing ring behind image */}
+          <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-blue-500/30 via-purple-500/20 to-transparent blur-2xl" />
+          {/* Outer subtle border ring */}
+          <div className="absolute -inset-1 rounded-full border border-border-secondary opacity-60" />
+          <div className="relative w-60 h-60 sm:w-72 sm:h-72 rounded-full border-[2px] border-border-secondary overflow-hidden shadow-2xl">
             <Image
               src="/profile.jpg"
               alt="Yash Verma"
               fill
-              className="object-cover scale-[1.3] translate-y-[3%]" /* Adjusted scale to center the portrait */
+              className="object-cover scale-[1.3] translate-y-[3%]"
               priority
             />
           </div>
+          {/* Availability badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 18 }}
+            className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap inline-flex items-center gap-1.5 bg-background border border-border-secondary shadow-lg px-3.5 py-1.5 rounded-full text-[10px] font-bold text-foreground"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            Open to Work
+          </motion.div>
         </motion.div>
 
-
-        {/* Right column: Text Content */}
-        <div className="flex-1 flex flex-col items-start text-left">
-          {/* Software Engineer Label */}
+        {/* Right — Text */}
+        <div className="flex-1 flex flex-col items-start">
+          {/* Location */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800/80 text-foreground border border-border-secondary mb-6"
+            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-muted mb-4"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent dark:bg-accent" />
-            Software Engineer
+            <MapPin className="w-3 h-3" />
+            India · IIIT Manipur
           </motion.div>
 
-          {/* Large typography title */}
+          {/* Name + Title */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.05 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.08] mb-6 max-w-3xl"
+            transition={{ type: "spring", stiffness: 90, damping: 16, delay: 0.04 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.06] mb-5"
           >
-            Building scalable <br />
-            software products and <br />
-            <span className="gradient-text">intelligent systems.</span>
+            Hi, I&apos;m{" "}
+            <span className="gradient-text">Yash Verma</span>
+            <br />
+            <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-muted/80">
+              Software Engineer
+            </span>
           </motion.h1>
 
-          {/* Description body */}
+          {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.1 }}
-            className="text-base sm:text-lg text-muted leading-relaxed mb-8 max-w-2xl font-normal"
+            transition={{ type: "spring", stiffness: 90, damping: 16, delay: 0.09 }}
+            className="text-sm sm:text-base text-muted leading-relaxed mb-8 max-w-xl"
           >
-            Computer Science Engineer focused on backend systems, full-stack applications, automation, and AI-powered products. Experienced in shipping production-ready features and building systems used by real users.
+            CS Engineer building{" "}
+            <span className="text-foreground font-semibold">scalable backend systems</span>,{" "}
+            full-stack products and{" "}
+            <span className="text-foreground font-semibold">AI-powered tools</span>.
+            Shipping production-quality features at startups and research labs.
           </motion.p>
 
-          {/* Action Button Grids */}
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.15 }}
-            className="flex flex-wrap items-center gap-4 mb-12"
+            transition={{ type: "spring", stiffness: 90, damping: 16, delay: 0.14 }}
+            className="flex flex-wrap items-center gap-3 mb-10"
           >
             <a
               href="#projects"
-              className="inline-flex items-center gap-1.5 text-xs font-bold bg-foreground text-background py-3 px-5 rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 text-xs font-bold bg-foreground text-background py-2.5 px-5 rounded-lg hover:opacity-85 transition-all hover:gap-3"
             >
               View Projects
               <ArrowRight className="w-3.5 h-3.5" />
@@ -85,50 +107,54 @@ export default function Hero() {
             <a
               href="/resume.pdf"
               download
-              className="inline-flex items-center gap-1.5 text-xs font-bold bg-card text-foreground py-3 px-5 rounded-lg border border-border-secondary hover:bg-border/60 transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-bold text-foreground bg-card py-2.5 px-5 rounded-lg border border-border hover:border-border-secondary transition-all"
             >
-              Download Resume
-              <Download className="w-3.5 h-3.5" />
+              Resume
+              <Download className="w-3.5 h-3.5 text-muted" />
             </a>
           </motion.div>
 
-          {/* Social anchors list */}
+          {/* Social row */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="flex items-center gap-6 text-muted border-t border-border-secondary pt-8 w-full"
+            transition={{ duration: 0.5, delay: 0.28 }}
+            className="flex items-center gap-5 pt-6 border-t border-border w-full text-muted"
           >
-            <a
-              href="https://github.com/Baymax1705"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
-            >
-              <Github className="w-4 h-4 group-hover:scale-105 transition-transform" />
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/yash-verma-baymax1705/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
-            >
-              <Linkedin className="w-4 h-4 text-blue-500 group-hover:scale-105 transition-transform" />
-              LinkedIn
-            </a>
-            <a
-              href="mailto:yashverma.off17@gmail.com"
-              className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
-            >
-              <Mail className="w-4 h-4 text-red-500 group-hover:scale-105 transition-transform" />
-              Email
-            </a>
+            {[
+              {
+                href: "https://github.com/Baymax1705",
+                icon: <Github className="w-4 h-4" />,
+                label: "GitHub",
+                color: "",
+              },
+              {
+                href: "https://linkedin.com/in/yash-verma-baymax1705/",
+                icon: <Linkedin className="w-4 h-4" />,
+                label: "LinkedIn",
+                color: "text-blue-500",
+              },
+              {
+                href: "mailto:yashverma.off17@gmail.com",
+                icon: <Mail className="w-4 h-4" />,
+                label: "Email",
+                color: "text-red-400",
+              },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target={s.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className={`flex items-center gap-1.5 text-xs font-semibold hover:text-foreground transition-colors group ${s.color}`}
+              >
+                <span className="group-hover:scale-110 transition-transform">{s.icon}</span>
+                {s.label}
+              </a>
+            ))}
           </motion.div>
         </div>
       </div>
-
     </section>
   );
 }
-
