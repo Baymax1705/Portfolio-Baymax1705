@@ -16,11 +16,11 @@ export default function Education() {
       location: "Imphal, Manipur",
       cgpa: "7.80",
       highlights: [
-        "Final-year student specializing in systems and AI",
+        "Graduated with specialization in systems and AI",
         "Active in competitive programming and open-source",
         "Key courses: DSA, OS, DBMS, CN, ML, Software Engineering",
       ],
-      badge: "Final Year",
+      badge: "Graduated",
       badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
     },
     {
@@ -179,7 +179,7 @@ export default function Education() {
           className="mt-8 grid grid-cols-3 gap-4"
         >
           {[
-            { icon: <GraduationCap className="w-4 h-4 text-accent" />, label: "Graduating", value: "2026" },
+            { icon: <GraduationCap className="w-4 h-4 text-accent" />, label: "Graduated", value: "2026" },
             { icon: <BookOpen className="w-4 h-4 text-violet-500" />, label: "Board", value: "CISCE" },
             { icon: <FlaskConical className="w-4 h-4 text-emerald-500" />, label: "Major", value: "CSE" },
           ].map((stat, i) => (
