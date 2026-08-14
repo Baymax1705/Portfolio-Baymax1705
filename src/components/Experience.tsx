@@ -9,8 +9,9 @@ export default function Experience() {
     {
       company: "ModelSuite.ai",
       role: "Software Engineering Intern",
-      period: "Present",
+      period: "Jul 2026 – Present",
       highlights: [
+
         "Delivered 30+ production pull requests",
         "Built features across enterprise and AI-powered products",
         "Improved accessibility and workflow automation",
@@ -21,7 +22,7 @@ export default function Experience() {
     {
       company: "IIT Ropar (VLED Labs)",
       role: "Project Intern",
-      period: "Internship",
+      period: "Jan 2026 – Mar 2026",
       highlights: [
         "Contributed to Ajrasakha multilingual chatbot",
         "Built conversation history and query retrieval functionality",
@@ -29,7 +30,18 @@ export default function Experience() {
         "Improved conversation continuity and data workflows",
       ],
     },
+    {
+      company: "Centre for Development of Advanced Computing (C-DAC)",
+      role: "Ethical Hacking and Penetration Testing Intern",
+      period: "May 2024 – Jun 2024",
+      highlights: [
+        "Conducted security research and vulnerability assessment activities",
+        "Explored ethical hacking techniques and penetration testing methodologies",
+        "Contributed to digital content verification approaches",
+      ],
+    },
   ];
+
 
   return (
     <section id="experience" className="py-20 sm:py-28 bg-background border-b border-border">
