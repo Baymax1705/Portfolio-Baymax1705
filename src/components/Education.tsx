@@ -14,16 +14,17 @@ export default function Education() {
     },
     {
       institution: "Lucknow Public School & Colleges, Lucknow",
-      degree: "HSC (Class XII) - Council for the Indian School Certificate Examinations (89.0%)",
+      degree: "HSC (Class XII) - Council for the Indian School Certificate Examinations",
       period: "2021",
       location: "Lucknow, Uttar Pradesh",
     },
     {
       institution: "Lucknow Public School & Colleges, Lucknow",
-      degree: "SSC (Class X) - Council for the Indian School Certificate Examinations (80.6%)",
+      degree: "SSC (Class X) - Council for the Indian School Certificate Examinations",
       period: "2019",
       location: "Lucknow, Uttar Pradesh",
     },
+
   ];
 
 
