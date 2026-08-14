@@ -11,9 +11,29 @@ export default function Hero() {
       {/* Dynamic backdrop glows and grid mask */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background to-background" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-start md:items-center gap-12 sm:gap-16">
-        {/* Left column: Text Content */}
-        <div className="flex-1 flex flex-col items-start">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-center gap-12 sm:gap-16">
+        {/* Left column: Image Profile Picture (Bigger & Left-aligned) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="relative shrink-0 mx-auto md:mx-0"
+        >
+          {/* Subtle gradient ring outline */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-accent to-accent-end opacity-20 blur-lg" />
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-2xl border-[3px] border-border-secondary overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+            <Image
+              src="/profile.jpg"
+              alt="Yash Verma"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
+
+        {/* Right column: Text Content */}
+        <div className="flex-1 flex flex-col items-start text-left">
           {/* Software Engineer Label */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -92,40 +112,21 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
-          >
-            <Linkedin className="w-4 h-4 text-blue-500 group-hover:scale-105 transition-transform" />
-            LinkedIn
-          </a>
-          <a
-            href="mailto:yashverma.off17@gmail.com"
-            className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
-          >
-            <Mail className="w-4 h-4 text-red-500 group-hover:scale-105 transition-transform" />
-            Email
-          </a>
+            >
+              <Linkedin className="w-4 h-4 text-blue-500 group-hover:scale-105 transition-transform" />
+              LinkedIn
+            </a>
+            <a
+              href="mailto:yashverma.off17@gmail.com"
+              className="flex items-center gap-2 text-xs font-bold hover:text-foreground transition-colors group"
+            >
+              <Mail className="w-4 h-4 text-red-500 group-hover:scale-105 transition-transform" />
+              Email
+            </a>
           </motion.div>
         </div>
-
-        {/* Right column: Image Profile Picture */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative shrink-0 mx-auto md:mx-0"
-        >
-          {/* Subtle gradient ring outline */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent to-accent-end opacity-20 blur-md" />
-          <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[3px] border-border-secondary overflow-hidden shadow-xl">
-            <Image
-              src="/profile.jpg"
-              alt="Yash Verma"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        </motion.div>
       </div>
+
     </section>
   );
 }
