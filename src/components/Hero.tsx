@@ -83,9 +83,6 @@ export default function Hero() {
             <span className="inline-flex items-center text-[10px] font-bold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-border-secondary px-2.5 py-1 rounded-md">
               🎯 GATE CS &apos;26 Qualified
             </span>
-            <span className="inline-flex items-center text-[10px] font-bold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-border-secondary px-2.5 py-1 rounded-md">
-              ⚡ Amazon ML Summer School &apos;25
-            </span>
             <a
               href="https://leetcode.com/u/Baymax_17/"
               target="_blank"
