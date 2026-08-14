@@ -2,65 +2,44 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Calendar, MapPin, BookOpen, Award, FlaskConical } from "lucide-react";
+import { GraduationCap, Calendar, MapPin, BookOpen, Award } from "lucide-react";
 
 export default function Education() {
-  const educationList = [
+  const university = {
+    institution: "Indian Institute of Information Technology, Manipur",
+    short: "IIIT Manipur",
+    degree: "B.Tech · Computer Science & Engineering",
+    period: "2022 – 2026",
+    location: "Imphal, Manipur",
+    cgpa: "7.80",
+    courses: ["Data Structures & Algorithms", "Operating Systems", "Database Management", "Computer Networks", "Software Engineering", "Machine Learning"],
+    highlight: "Final Year · Graduating 2026",
+  };
+
+  const schooling = [
     {
-      type: "university",
-      emoji: "🎓",
-      institution: "Indian Institute of Information Technology, Manipur",
-      short: "IIIT Manipur",
-      degree: "B.Tech · Computer Science & Engineering",
-      period: "2022 – 2026",
-      location: "Imphal, Manipur",
-      cgpa: "7.80",
-      highlights: [
-        "Graduated with specialization in systems and AI",
-        "Active in competitive programming and open-source",
-        "Key courses: DSA, OS, DBMS, CN, ML, Software Engineering",
-      ],
-      badge: "Graduated",
-      badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-    },
-    {
-      type: "school",
-      emoji: "🏫",
       institution: "Lucknow Public School & Colleges",
-      short: "LPS Lucknow",
-      degree: "HSC · Class XII",
+      level: "HSC · Class XII",
       board: "CISCE Board",
       period: "2021",
       location: "Lucknow, Uttar Pradesh",
-      highlights: [
-        "Physics, Chemistry, Mathematics & Computer Science",
-        "Council for the Indian School Certificate Examinations",
-      ],
-      badge: "Class XII",
-      badgeColor: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+      icon: "🎓",
     },
     {
-      type: "school",
-      emoji: "📚",
       institution: "Lucknow Public School & Colleges",
-      short: "LPS Lucknow",
-      degree: "SSC · Class X",
+      level: "SSC · Class X",
       board: "CISCE Board",
       period: "2019",
       location: "Lucknow, Uttar Pradesh",
-      highlights: [
-        "Foundation studies in Science, Mathematics & English",
-        "Council for the Indian School Certificate Examinations",
-      ],
-      badge: "Class X",
-      badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+      icon: "📚",
     },
   ];
 
   return (
     <section id="education" className="py-20 sm:py-28 bg-background border-b border-border">
       <div className="max-w-3xl mx-auto px-6">
-        {/* Section header */}
+
+        {/* Section Header */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,119 +59,123 @@ export default function Education() {
           Academic background
         </motion.h2>
 
-        <div className="space-y-5">
-          {educationList.map((edu, idx) => (
+        {/* ── University Card (Hero-sized, highlighted) ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-8% 0px -8% 0px" }}
+          transition={{ type: "spring", stiffness: 75, damping: 16 }}
+          className="relative mb-8 rounded-2xl overflow-hidden"
+        >
+          {/* Gradient border wrapper */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/40 via-purple-500/20 to-transparent p-[1px]" />
+
+          {/* Glow behind the card */}
+          <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent blur-2xl pointer-events-none" />
+
+          <div className="relative rounded-2xl bg-card border border-border overflow-hidden">
+            {/* Top accent bar */}
+            <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-violet-500 to-purple-500" />
+
+            <div className="p-7 sm:p-8">
+              {/* Badge */}
+              <div className="flex items-center gap-2 mb-5 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full">
+                  <GraduationCap className="w-3 h-3" />
+                  {university.highlight}
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20 px-3 py-1 rounded-full">
+                  <Award className="w-3 h-3" />
+                  CGPA {university.cgpa}
+                </span>
+              </div>
+
+              {/* Institution name */}
+              <h3 className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight mb-1 leading-tight">
+                {university.institution}
+              </h3>
+              <p className="text-sm font-semibold text-muted mb-5">{university.degree}</p>
+
+              {/* Meta row */}
+              <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-muted mb-7">
+                <span className="inline-flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5" />
+                  {university.period}
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5" />
+                  {university.location}
+                </span>
+              </div>
+
+              {/* Coursework */}
+              <div>
+                <p className="inline-flex items-center gap-1.5 text-[11px] font-bold section-label mb-3">
+                  <BookOpen className="w-3 h-3" />
+                  Key Coursework
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {university.courses.map((course) => (
+                    <span
+                      key={course}
+                      className="text-[11px] font-semibold bg-background border border-border text-muted px-3 py-1 rounded-lg hover:border-border-secondary hover:text-foreground transition-colors"
+                    >
+                      {course}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── Schooling Cards ── */}
+        <div className="space-y-4">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.35 }}
+            className="section-label mb-4"
+          >
+            Schooling
+          </motion.p>
+
+          {schooling.map((school, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-8% 0px -8% 0px" }}
-              transition={{ type: "spring", stiffness: 80, damping: 16, delay: idx * 0.07 }}
-              className="group relative border border-border bg-card rounded-2xl overflow-hidden card-hover"
+              transition={{ type: "spring", stiffness: 85, damping: 16, delay: idx * 0.07 }}
+              className="group flex items-start gap-4 border border-border bg-card p-5 rounded-xl card-hover"
             >
-              {/* Shimmer on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shimmer pointer-events-none" />
+              {/* Emoji icon */}
+              <div className="w-10 h-10 rounded-xl bg-background border border-border flex items-center justify-center text-xl shrink-0 group-hover:border-border-secondary transition-colors">
+                {school.icon}
+              </div>
 
-              {/* Top accent line */}
-              <div
-                className={`h-[3px] w-full ${
-                  idx === 0
-                    ? "bg-gradient-to-r from-blue-500 to-indigo-500"
-                    : idx === 1
-                    ? "bg-gradient-to-r from-violet-500 to-purple-500"
-                    : "bg-gradient-to-r from-emerald-500 to-teal-500"
-                }`}
-              />
-
-              <div className="p-6">
-                {/* Header row */}
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="flex items-start gap-3.5">
-                    {/* Emoji icon */}
-                    <div className="text-2xl leading-none mt-0.5 shrink-0">{edu.emoji}</div>
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                        <h3 className="text-base font-bold text-foreground leading-tight">
-                          {edu.institution}
-                        </h3>
-                        <span
-                          className={`inline-flex items-center text-[10px] font-bold border px-2 py-0.5 rounded-full ${edu.badgeColor}`}
-                        >
-                          {edu.badge}
-                        </span>
-                      </div>
-                      <p className="text-sm font-semibold text-muted">{edu.degree}</p>
-                      {"board" in edu && (
-                        <p className="text-[11px] text-muted/70 mt-0.5">{edu.board}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Right: CGPA or period */}
-                  <div className="flex flex-col items-end gap-1.5 shrink-0">
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-muted bg-background border border-border px-2.5 py-1 rounded-md">
-                      <Calendar className="w-3 h-3" />
-                      {edu.period}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] text-muted/70">
-                      <MapPin className="w-2.5 h-2.5" />
-                      {edu.location}
-                    </span>
-                  </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                  <h3 className="text-sm font-bold text-foreground">{school.institution}</h3>
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold text-muted bg-background border border-border px-2 py-0.5 rounded-md shrink-0">
+                    <Calendar className="w-2.5 h-2.5" />
+                    {school.period}
+                  </span>
                 </div>
-
-                {/* CGPA badge — only for university */}
-                {"cgpa" in edu && (
-                  <div className="mb-4">
-                    <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-lg">
-                      <Award className="w-3.5 h-3.5 text-amber-500" />
-                      <span className="text-xs font-bold text-amber-600 dark:text-amber-400">
-                        CGPA: {edu.cgpa} / 10
-                      </span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Divider */}
-                <div className="border-t border-border mb-4" />
-
-                {/* Highlights */}
-                <ul className="space-y-1.5">
-                  {edu.highlights.map((h, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-muted leading-relaxed">
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-muted/50 shrink-0" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-xs font-semibold text-accent mb-1">{school.level}</p>
+                <div className="flex items-center gap-3 text-[11px] text-muted">
+                  <span className="font-medium">{school.board}</span>
+                  <span>·</span>
+                  <span className="inline-flex items-center gap-1">
+                    <MapPin className="w-2.5 h-2.5" />
+                    {school.location}
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Footer stat strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-8 grid grid-cols-3 gap-4"
-        >
-          {[
-            { icon: <GraduationCap className="w-4 h-4 text-accent" />, label: "Graduated", value: "2026" },
-            { icon: <BookOpen className="w-4 h-4 text-violet-500" />, label: "Board", value: "CISCE" },
-            { icon: <FlaskConical className="w-4 h-4 text-emerald-500" />, label: "Major", value: "CSE" },
-          ].map((stat, i) => (
-            <div
-              key={i}
-              className="border border-border bg-card rounded-xl p-4 flex flex-col items-center gap-1.5 text-center card-hover"
-            >
-              {stat.icon}
-              <span className="text-lg font-extrabold text-foreground">{stat.value}</span>
-              <span className="text-[10px] font-semibold text-muted uppercase tracking-wider">{stat.label}</span>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
