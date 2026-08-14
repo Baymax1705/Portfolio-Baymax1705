@@ -37,90 +37,87 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 sm:py-28 bg-background border-b border-border">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-6">
         <motion.h2
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12"
+          transition={{ duration: 0.4 }}
+          className="text-xs font-bold uppercase tracking-widest text-muted mb-12"
         >
           Featured Projects
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-12">
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="premium-card flex flex-col h-full border border-border bg-card rounded-xl overflow-hidden shadow-sm"
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              className="group border border-border bg-card p-6 rounded-xl shadow-sm hover:border-border-secondary transition-colors"
             >
-              {/* Card visual mockup / header tag */}
-              <div className="p-6 bg-gradient-to-br from-slate-50 to-slate-100/50 dark:from-slate-900/40 dark:to-slate-900/10 border-b border-border flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-background border border-border flex items-center justify-center shadow-sm">
-                    <Code2 className="w-4 h-4 text-accent" />
+              {/* Header Details */}
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-md bg-background border border-border flex items-center justify-center">
+                    <Code2 className="w-3.5 h-3.5 text-accent" />
                   </div>
-                  <span className="font-semibold text-sm tracking-tight text-foreground">
+                  <h3 className="font-bold text-sm text-foreground">
                     {project.title}
-                  </span>
+                  </h3>
                 </div>
-                <div className="flex items-center gap-3">
+
+                <div className="flex items-center gap-2">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-1.5 rounded-md hover:bg-background border border-transparent hover:border-border text-muted hover:text-foreground transition-all"
-                    aria-label="GitHub link"
+                    className="p-1 rounded hover:bg-background border border-transparent hover:border-border text-muted hover:text-foreground transition-all"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-4.5 h-4.5" />
                   </a>
                   {project.demo && (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-md hover:bg-background border border-transparent hover:border-border text-muted hover:text-foreground transition-all"
-                      aria-label="Live Demo link"
+                      className="p-1 rounded hover:bg-background border border-transparent hover:border-border text-muted hover:text-foreground transition-all"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-4.5 h-4.5" />
                     </a>
                   )}
                 </div>
               </div>
 
-              {/* Card Body */}
-              <div className="p-6 flex flex-col flex-1">
-                <p className="text-sm text-muted mb-5 leading-relaxed flex-1">
-                  {project.description}
-                </p>
+              {/* Main Content */}
+              <p className="text-xs text-muted mb-4 leading-relaxed">
+                {project.description}
+              </p>
 
-                {/* Technical highlights details */}
-                <div className="space-y-3.5 pt-4 border-t border-border/60 mb-5">
-                  <div className="text-xs">
-                    <span className="font-bold text-foreground block mb-0.5">Problem Solved:</span>
-                    <span className="text-muted leading-relaxed">{project.problem}</span>
-                  </div>
-                  <div className="text-xs">
-                    <span className="font-bold text-foreground block mb-0.5">Impact & Scope:</span>
-                    <span className="text-muted leading-relaxed">{project.metrics}</span>
-                  </div>
+              {/* Problem/Impact Split Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border mb-4 text-[11px]">
+                <div>
+                  <span className="font-bold text-foreground block mb-0.5">Problem:</span>
+                  <span className="text-muted leading-relaxed">{project.problem}</span>
                 </div>
+                <div>
+                  <span className="font-bold text-foreground block mb-0.5">Metric & Impact:</span>
+                  <span className="text-muted leading-relaxed">{project.metrics}</span>
+                </div>
+              </div>
 
-                {/* Tech Badges */}
-                <div className="flex flex-wrap gap-1.5 mt-auto">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[10px] font-bold bg-background border border-border/80 px-2 py-0.5 rounded text-muted shadow-sm"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              {/* Tech tag list */}
+              <div className="flex flex-wrap gap-1">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[9px] font-bold bg-background border border-border px-2 py-0.5 rounded text-muted shadow-sm"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
@@ -129,4 +126,5 @@ export default function Projects() {
     </section>
   );
 }
+
 

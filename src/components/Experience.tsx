@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, CheckCircle2 } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 export default function Experience() {
   const experiences = [
@@ -33,48 +33,48 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 sm:py-28 bg-background border-b border-border">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-6">
         <motion.h2
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12"
+          transition={{ duration: 0.4 }}
+          className="text-xs font-bold uppercase tracking-widest text-muted mb-12"
         >
           Work Experience
         </motion.h2>
 
-        <div className="space-y-12">
+        <div className="relative border-l border-border-secondary pl-6 ml-2 space-y-16">
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="premium-card group relative border border-border bg-card rounded-xl p-6 sm:p-8 shadow-sm"
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              className="relative"
             >
-              {/* Card Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+              {/* Timeline circle point */}
+              <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-background border-2 border-accent" />
+
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 mb-4">
                 <div>
-                  <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-accent" />
+                  <h3 className="text-base font-bold text-foreground">
                     {exp.company}
                   </h3>
-                  <p className="text-sm font-medium text-muted mt-0.5">{exp.role}</p>
+                  <p className="text-xs font-semibold text-muted mt-0.5">{exp.role}</p>
                 </div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted bg-background border border-border px-3 py-1 rounded-full self-start sm:self-center">
-                  <Calendar className="w-3 h-3" />
+                <div className="inline-flex items-center gap-1 text-[10px] font-bold text-muted bg-card border border-border px-2 py-0.5 rounded-md self-start">
+                  <Calendar className="w-2.5 h-2.5" />
                   {exp.period}
                 </div>
               </div>
 
-              {/* Highlights List */}
-              <ul className="space-y-3">
+              {/* Highlights */}
+              <ul className="space-y-2.5">
                 {exp.highlights.map((highlight, itemIdx) => (
-                  <li key={itemIdx} className="flex items-start gap-3 text-sm text-muted leading-relaxed">
-                    <CheckCircle2 className="w-4 h-4 text-accent/80 shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
+                  <li key={itemIdx} className="text-xs text-muted leading-relaxed list-disc list-inside">
+                    <span className="text-muted/80">{highlight}</span>
                   </li>
                 ))}
               </ul>
@@ -85,4 +85,5 @@ export default function Experience() {
     </section>
   );
 }
+
 

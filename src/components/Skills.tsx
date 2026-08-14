@@ -8,70 +8,68 @@ export default function Skills() {
   const skillCategories = [
     {
       title: "Languages",
-      icon: <Code2 className="w-4 h-4 text-blue-600" />,
+      icon: <Code2 className="w-3.5 h-3.5 text-blue-600" />,
       items: ["C++", "Python", "JavaScript", "TypeScript"],
     },
     {
       title: "Frontend",
-      icon: <Layout className="w-4 h-4 text-indigo-600" />,
+      icon: <Layout className="w-3.5 h-3.5 text-indigo-600" />,
       items: ["React", "Next.js", "TailwindCSS"],
     },
     {
       title: "Backend",
-      icon: <Server className="w-4 h-4 text-emerald-600" />,
+      icon: <Server className="w-3.5 h-3.5 text-emerald-600" />,
       items: ["Node.js", "Express", "FastAPI"],
     },
     {
       title: "Databases",
-      icon: <Database className="w-4 h-4 text-purple-600" />,
+      icon: <Database className="w-3.5 h-3.5 text-purple-600" />,
       items: ["MongoDB", "MySQL", "SQLite"],
     },
     {
-      title: "Tools & Infrastructure",
-      icon: <Settings className="w-4 h-4 text-slate-600" />,
+      title: "Tools",
+      icon: <Settings className="w-3.5 h-3.5 text-slate-600" />,
       items: ["Git", "GitHub", "Linux", "Postman"],
     },
   ];
 
   return (
     <section id="skills" className="py-20 sm:py-28 bg-background border-b border-border">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-6">
         <motion.h2
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-12"
+          transition={{ duration: 0.4 }}
+          className="text-xs font-bold uppercase tracking-widest text-muted mb-12"
         >
           Technical Skills
         </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="border border-border bg-card rounded-xl divide-y divide-border overflow-hidden shadow-sm">
           {skillCategories.map((category, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="premium-card border border-border bg-card p-6 rounded-xl shadow-sm"
+              transition={{ duration: 0.3, delay: idx * 0.04 }}
+              className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
-              {/* Category Header */}
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="p-1.5 rounded-lg bg-background border border-border/80 shadow-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-md bg-background border border-border flex items-center justify-center shadow-sm">
                   {category.icon}
                 </div>
-                <h3 className="font-bold text-sm text-foreground tracking-tight">
+                <span className="font-bold text-xs text-foreground tracking-tight">
                   {category.title}
-                </h3>
+                </span>
               </div>
 
-              {/* Items List */}
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 sm:justify-end">
                 {category.items.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs bg-background border border-border/80 px-2.5 py-1 rounded-md text-foreground font-semibold shadow-sm"
+                    className="text-[10px] font-bold bg-background border border-border/80 px-2.5 py-1 rounded-md text-foreground shadow-sm"
                   >
                     {skill}
                   </span>
@@ -84,4 +82,5 @@ export default function Skills() {
     </section>
   );
 }
+
 

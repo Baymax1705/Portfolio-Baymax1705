@@ -1,24 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
+import { ArrowUpRight, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Avoid hydration mismatch by waiting for mounting
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -33,42 +27,43 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-200 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border/80 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]"
+          ? "bg-background/70 backdrop-blur-md border-b border-border/80"
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-semibold text-lg tracking-tight select-none">
-          Yash Verma
+      <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="#" className="font-semibold text-sm tracking-tight hover:opacity-85 transition-opacity">
+          yash.verma
         </a>
 
-        {/* Desktop nav items */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Links Navigation */}
+        <nav className="flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted hover:text-foreground transition-colors"
+              className="text-xs font-medium text-muted hover:text-foreground transition-colors nav-link"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
+        {/* Action Buttons Row */}
+        <div className="flex items-center gap-3">
           {/* Light/Dark Toggle */}
           {mounted && (
             <button
               onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg border border-border bg-card hover:bg-border/30 transition-colors text-muted hover:text-foreground"
+              className="p-1.5 rounded-md border border-border bg-card hover:bg-border/60 transition-colors text-muted hover:text-foreground"
               aria-label="Toggle theme"
             >
               {resolvedTheme === "dark" ? (
-                <Sun className="w-4 h-4" />
+                <Sun className="w-3.5 h-3.5" />
               ) : (
-                <Moon className="w-4 h-4" />
+                <Moon className="w-3.5 h-3.5" />
               )}
             </button>
           )}
@@ -77,61 +72,15 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold bg-foreground text-background py-2 px-4 rounded-lg hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-1 text-[11px] font-bold bg-foreground text-background py-1.5 px-3.5 rounded-md hover:opacity-90 transition-opacity"
           >
             Resume
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3 h-3" />
           </a>
         </div>
-
-        {/* Mobile menu trigger */}
-        <div className="md:hidden flex items-center gap-3">
-          {mounted && (
-            <button
-              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-              className="p-1.5 rounded-lg border border-border bg-card text-muted hover:text-foreground"
-              aria-label="Toggle theme"
-            >
-              {resolvedTheme === "dark" ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
-            </button>
-          )}
-          <button
-            className="p-1.5 hover:bg-card rounded-md border border-border/40 transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
       </div>
-
-      {/* Mobile nav drawer */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-b border-border bg-background flex flex-col px-6 py-4 gap-4 animate-in fade-in slide-in-from-top-2 duration-150">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-sm font-medium text-muted hover:text-foreground transition-colors py-1.5"
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="border-t border-border pt-4 mt-2">
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-1.5 text-sm font-semibold bg-foreground text-background py-2.5 rounded-lg hover:opacity-90 transition-opacity"
-            >
-              Resume
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
+
 
